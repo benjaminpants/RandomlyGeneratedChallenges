@@ -20,7 +20,7 @@ namespace RandomlyGeneratedChallenges
     {
         static void Postfix(EnvironmentController __instance)
         {
-            if (Singleton<StealthyChallengeManager>.Instance != null)
+            if (Singleton<BaseGameManager>.Instance is StealthyChallengeManager)
             {
                 RandomChallengesPlugin.Log.LogInfo("Starting missing arrows coroutine!");
                 __instance.StartCoroutine(AddPrincipalArrows(__instance));
@@ -44,6 +44,19 @@ namespace RandomlyGeneratedChallenges
                     }
                 }
                 yield return null;
+            }
+            foreach (NPC npc in ec.Npcs)
+            {
+                if (npc.Character == Character.Principal)
+                {
+                    if (!ec.map.arrowTargets.Contains(npc.transform))
+                    {
+#if DEBUG
+                        RandomChallengesPlugin.Log.LogWarning("Added missing arrow post-loop...");
+#endif
+                        ec.map.AddArrow(npc.transform, Color.gray);
+                    }
+                }
             }
             yield break;
         }

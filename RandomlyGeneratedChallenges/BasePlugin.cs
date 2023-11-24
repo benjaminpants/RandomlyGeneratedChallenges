@@ -14,7 +14,7 @@ using UnityEngine.Rendering;
 
 namespace RandomlyGeneratedChallenges
 {
-    [BepInPlugin("mtm101.rulerp.baldiplus.randomchallenges", "Randomly Generated Challenges", "1.0.0.0")]
+    [BepInPlugin("mtm101.rulerp.baldiplus.randomchallenges", "Randomly Generated Challenges", "1.0.0.1")]
     [BepInDependency("mtm101.rulerp.bbplus.baldidevapi")]
     public class RandomChallengesPlugin : BaseUnityPlugin
     {

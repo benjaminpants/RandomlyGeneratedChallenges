@@ -33,6 +33,7 @@ namespace RandomlyGeneratedChallenges
             base.Finish();
             foreach (Door door in this.room.doors)
             {
+                if (door is Window) continue; //dont remove windows, those are fine.
                 RemoveDoor(door.position, door.direction, door);
                 room.ec.UpdateTile(door.position);
                 IntVector2 secondPos = door.position + door.direction.ToIntVector2();
